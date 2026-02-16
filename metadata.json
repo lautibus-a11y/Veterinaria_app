@@ -1,0 +1,8 @@
+{
+  "name": "VetSaaS Pro - Multi-tenant Veterinary Platform",
+  "description": "A professional SaaS for veterinary clinics featuring clinical history, appointment scheduling, multi-tenant isolation, AI-powered medical insights, and WhatsApp integrations.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
