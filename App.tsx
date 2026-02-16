@@ -151,7 +151,7 @@ const App: React.FC = () => {
           }`}
       >
         <Icon size={20} className={isActive ? 'text-white' : 'text-slate-400'} />
-        <span className={`${!isSidebarOpen && 'lg:hidden'} font-bold text-sm tracking-tight`}>{label}</span>
+        <span className={`${!isSidebarOpen ? 'lg:hidden' : ''} font-bold text-sm tracking-tight whitespace-nowrap overflow-hidden`}>{label}</span>
       </Link>
     );
   };
@@ -181,8 +181,8 @@ const App: React.FC = () => {
 
         {/* Sidebar */}
         <aside
-          className={`fixed lg:static inset-y-0 left-0 bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-50 
-            ${isSidebarOpen ? 'w-64 translate-x-0' : 'w-20 -translate-x-full lg:translate-x-0'}
+          className={`fixed lg:static inset-y-0 left-0 bg-white border-r border-slate-200 transition-all duration-300 flex flex-col z-50 overflow-hidden
+            ${isSidebarOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full lg:w-20 lg:translate-x-0'}
           `}
         >
           <div className="p-6 flex items-center justify-between">
@@ -221,7 +221,7 @@ const App: React.FC = () => {
               className="flex items-center space-x-3 p-3 w-full rounded-xl text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-all group"
             >
               <LogOut size={20} className="group-hover:text-rose-600" />
-              <span className={`${!isSidebarOpen && 'lg:hidden'} font-bold text-sm text-left`}>Cerrar Sesión</span>
+              <span className={`${!isSidebarOpen ? 'lg:hidden' : ''} font-bold text-sm text-left whitespace-nowrap overflow-hidden`}>Cerrar Sesión</span>
             </button>
           </div>
         </aside>
