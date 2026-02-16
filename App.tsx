@@ -53,7 +53,7 @@ const App: React.FC = () => {
   const [session, setSession] = useState<Session | null>(null);
   const [tenant, setTenant] = useState<Tenant | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -142,13 +142,16 @@ const App: React.FC = () => {
     return (
       <Link
         to={to}
+        onClick={() => {
+          if (window.innerWidth < 1024) setIsSidebarOpen(false);
+        }}
         className={`flex items-center space-x-3 p-3 rounded-xl transition-all duration-300 ${isActive
           ? 'bg-emerald-600 text-white shadow-xl shadow-emerald-600/20'
           : 'text-slate-500 hover:bg-emerald-50 hover:text-emerald-600'
           }`}
       >
         <Icon size={20} className={isActive ? 'text-white' : 'text-slate-400'} />
-        <span className={`${!isSidebarOpen && 'hidden'} font-bold text-sm tracking-tight`}>{label}</span>
+        <span className={`${!isSidebarOpen && 'lg:hidden'} font-bold text-sm tracking-tight`}>{label}</span>
       </Link>
     );
   };
@@ -211,7 +214,10 @@ const App: React.FC = () => {
           <div className="p-4 border-t border-slate-100 space-y-1.5">
             <NavItem to="/settings" icon={Settings} label="Configuración" />
             <button
-              onClick={handleLogout}
+              onClick={() => {
+                handleLogout();
+                if (window.innerWidth < 1024) setIsSidebarOpen(false);
+              }}
               className="flex items-center space-x-3 p-3 w-full rounded-xl text-slate-500 hover:bg-rose-50 hover:text-rose-600 transition-all group"
             >
               <LogOut size={20} className="group-hover:text-rose-600" />
